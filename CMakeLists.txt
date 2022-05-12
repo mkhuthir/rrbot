@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(gripper)
+project(rrbot)
 
 # Default to C11
 if(NOT CMAKE_C_STANDARD)
@@ -64,7 +64,6 @@ endif()
 # Install C++ Modules
 install(TARGETS 
     
-  gripper
   cpp_node
 
   DESTINATION lib/${PROJECT_NAME}
@@ -75,7 +74,7 @@ ament_python_install_package(${PROJECT_NAME})
 
 install(PROGRAMS
 
-  scripts/gripper.py
+  scripts/rrbot.py
 
   DESTINATION lib/${PROJECT_NAME}
 )

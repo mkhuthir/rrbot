@@ -8,7 +8,7 @@
 
 <!-- ****************************************************** Parameters ***************************************************************  --> 
 
-  <xacro:property name="mesh_path"      value="package://robot_gazebo/meshes/rrbot/" />
+  <xacro:property name="mesh_path"      value="package://rrbot/meshes/rrbot/" />
 
   <xacro:property name="name_space"     value="rrbot" /> 
   <xacro:property name="prefix"         value=""      /> 
@@ -42,9 +42,9 @@
     
 <!-- ****************************************************** Includes *****************************************************************  --> 
 
-  <xacro:include filename="$(find robot_gazebo)/xacro/common_rviz_materials.xacro" />   <!-- RVIZ Colors                                -->
-  <xacro:include filename="$(find robot_gazebo)/gazebo/gz_rrbot.xacro" />               <!--  Gazebo                                    -->
-  <xacro:include filename="$(find robot_gazebo)/ros2_control/r2c_rrbot.xacro" />        <!--  ROS2_Control                              -->
+  <xacro:include filename="$(find rrbot)/xacro/common_rviz_materials.xacro" />   <!-- RVIZ Colors                                -->
+  <xacro:include filename="$(find rrbot)/gazebo/gz_rrbot.xacro" />               <!--  Gazebo                                    -->
+  <xacro:include filename="$(find rrbot)/ros2_control/r2c_rrbot.xacro" />        <!--  ROS2_Control                              -->
 
 <!-- ****************************************************** Base Joint ***************************************************************  -->
 
