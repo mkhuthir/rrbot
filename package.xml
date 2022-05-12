@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <package format="2">
 
-  <name>gripper</name>
+  <name>rrbot</name>
   <version>0.1.0</version>
   
-  <description>gripper</description>
+  <description>rrbot</description>
 
   <maintainer email="mkhuthir@gmail.com">Muthanna Alwahash</maintainer>
 
   <license>Apache License 2.0</license>
   
-  <url type="repository">https://github.com/mkhuthir/gz_ros2_control</url>
+  <url type="repository">https://github.com/mkhuthir/rrbot</url>
 
   <author>Muthanna Alwahash</author>
 
