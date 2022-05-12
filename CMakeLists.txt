@@ -43,11 +43,6 @@ install(DIRECTORY
 
 # C++ Executables
 
-add_executable(gripper src/gripper.cpp)
-ament_target_dependencies( gripper
-  rclcpp
-  std_msgs
-)
 
 add_executable(cpp_node src/cpp_node.cpp)
 ament_target_dependencies( cpp_node 
