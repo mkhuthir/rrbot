@@ -1,2 +1,2 @@
-# gripper
-ROS2 Gripper
+# RRBOT
+ROS2 RRBOT
