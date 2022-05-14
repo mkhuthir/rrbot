@@ -33,15 +33,6 @@ params = {'robot_description': doc.toxml()}
 
 def generate_launch_description():
 
-    # Start Gazebo server
-    gz_server = IncludeLaunchDescription(
-      PythonLaunchDescriptionSource(gzserver_path),
-      launch_arguments={'world': world_path}.items()),
-  
-    # Start Gazebo client    
-    gz_client = IncludeLaunchDescription(
-      PythonLaunchDescriptionSource(gzclient_path)),
-
     # Start robot state publisher
     node_robot_state_publisher = Node(
         package='robot_state_publisher',
@@ -54,7 +45,7 @@ def generate_launch_description():
     spawn_entity = Node(
         package=    'gazebo_ros', 
         executable= 'spawn_entity.py',
-        arguments= ['-topic', 'robot_description'
+        arguments= ['-topic', 'robot_description',
                     '-entity'  ,robot_name, 
                     '-x'       ,spawn_x_val,
                     '-y'       ,spawn_y_val,
@@ -65,8 +56,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        gz_server,
-        gz_client,
+
         node_robot_state_publisher,
         spawn_entity,
     ])
