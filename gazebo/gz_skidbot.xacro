@@ -1,60 +1,18 @@
 <?xml version="1.0"?>
 
-<robot name="rrbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="skidbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<!-- ****************************************************** RRBot Robot **************************************************************  -->
+<!-- ****************************************************** skidbot Robot *************************************************************  -->
 <!-- Muthanna Alwahash                                                                                                                  -->
 <!-- March 2022                                                                                                                         -->
 <!-- *********************************************************************************************************************************  -->
- 
-<!-- ****************************************************** Base Link ****************************************************************  -->
 
-  <gazebo reference="${prefix}base"> 
-      <mu1>0.2</mu1>
-      <mu2>0.2</mu2>
-      <material>Gazebo/Orange</material> 
+<!-- ****************************************************** Base *********************************************************************  -->
+
+  <gazebo reference="${prefix}base">
+    <material>Gazebo/Blue</material>
   </gazebo>
 
-<!-- ****************************************************** Link 1 *******************************************************************  -->
-
-  <gazebo reference="${prefix}link2"> 
-      <mu1>0.2</mu1>
-      <mu2>0.2</mu2>
-      <material>Gazebo/Orange</material> 
-  </gazebo>
-
-<!-- ****************************************************** Link 2 *******************************************************************  -->
-
-  <gazebo reference="${prefix}link3"> 
-      <mu1>0.2</mu1>
-      <mu2>0.2</mu2>
-      <material>Gazebo/Orange</material> 
-  </gazebo>    
-
-<!-- ****************************************************** Camera Link **************************************************************  -->
-
-  <gazebo reference="${prefix}camera">
-      <mu1>0.2</mu1>
-      <mu2>0.2</mu2>
-      <material>Gazebo/Green</material> 
-  </gazebo> 
-
-<!-- ****************************************************** World Link ****************************************************************  -->
-  
-  <link name="world"/>
-
-  <gazebo reference="world">
-    <static>true</static>
-  </gazebo>
-
-<!-- ****************************************************** ROS Control Plugin *******************************************************  -->
-
-  <gazebo>
-    <plugin name="ros2_control" filename="libgazebo_ros2_control.so">
-      <parameters>$(find rrbot)/config/rrbot_forward_position.yaml</parameters>
-    </plugin>
-  </gazebo>
-  
 <!-- ******************************************************  Joint States Publisher **************************************************  -->
 
   <gazebo>
@@ -62,12 +20,44 @@
       <ros>
         <namespace>${name_space}</namespace>
       </ros>
-      <joint_name>${prefix}base_joint</joint_name>
-      <joint_name>${prefix}joint1</joint_name>
-      <joint_name>${prefix}joint2</joint_name>
+      <joint_name>${prefix}front_left_wheel_joint</joint_name>
+      <joint_name>${prefix}back_left_wheel_joint</joint_name>
+      <joint_name>${prefix}front_right_wheel_joint</joint_name>
+      <joint_name>${prefix}back_right_wheel_joint</joint_name>
       <update_rate>100.0</update_rate>
     </plugin>
  </gazebo>
+
+<!-- ******************************************************  Skid Steer Drive Controller *********************************************  -->
+
+  <gazebo>
+    <plugin name="skid_drive" filename="libgazebo_ros_diff_drive.so">
+      <ros>
+        <namespace>${name_space}</namespace>        
+      </ros>
+      <num_wheel_pairs>2</num_wheel_pairs>
+      <!-- 1st Wheels Set -->
+      <left_joint>${prefix}front_left_wheel_joint</left_joint>
+      <right_joint>${prefix}front_right_wheel_joint</right_joint>
+      <wheel_separation>${wheel_y*2}</wheel_separation>
+      <wheel_diameter>${wheel_radius*2}</wheel_diameter>
+      <!-- 2nd Wheels Set -->
+      <left_joint>${prefix}back_left_wheel_joint</left_joint>
+      <right_joint>${prefix}back_right_wheel_joint</right_joint>
+      <wheel_separation>${wheel_y*2}</wheel_separation>
+      <wheel_diameter>${wheel_radius*2}</wheel_diameter>
+      <!---->
+      <max_wheel_torque>20</max_wheel_torque>
+      <max_wheel_acceleration>1.0</max_wheel_acceleration>
+      <update_rate>100.0</update_rate>
+      <!---->
+      <robot_base_frame>${prefix}footprint</robot_base_frame>
+      <odometry_frame>odom</odometry_frame>
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>true</publish_wheel_tf>
+    </plugin>
+  </gazebo>
 
 <!-- ******************************************************  Camera ******************************************************************  -->
 
@@ -161,6 +151,6 @@
     <!-- <material>Gazebo/Red</material> -->
   </gazebo>
 
-<!-- ****************************************************** END **********************************************************************  -->
+<!-- ****************************************************** end **********************************************************************  -->
 
 </robot>
