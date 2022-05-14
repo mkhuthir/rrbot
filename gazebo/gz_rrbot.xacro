@@ -50,8 +50,8 @@
 <!-- ****************************************************** ROS Control Plugin *******************************************************  -->
 
   <gazebo>
-    <plugin name="gz_ros2_control" filename="libgazebo_ros2_control.so">
-      <parameters>$(find rrbot)/config/rrbot_gazebo_forward_controller_position.yaml</parameters>
+    <plugin name="ros2_control" filename="libgazebo_ros2_control.so">
+      <parameters>$(find rrbot)/config/rrbot_forward_position.yaml</parameters>
     </plugin>
   </gazebo>
   
