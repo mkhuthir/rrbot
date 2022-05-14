@@ -13,7 +13,7 @@ def generate_launch_description():
     robot_description_content = Command(
         [
             PathJoinSubstitution([FindExecutable(name='xacro')])," ",
-            PathJoinSubstitution([FindPackageShare('gripper'),'xacro','rrbot.xacro']),
+            PathJoinSubstitution([FindPackageShare('rrbot'),'xacro','rrbot.xacro']),
         ]
     )
     
@@ -38,11 +38,6 @@ def generate_launch_description():
         output='screen'
     )
 
-    load_gripper_controller = ExecuteProcess(
-        cmd=['ros2', 'control', 'load_controller', '--set-state', 'start','gripper_controller'],
-        output='screen'
-    )
-
     return LaunchDescription([
         RegisterEventHandler(
           event_handler=OnProcessExit(
@@ -50,12 +45,7 @@ def generate_launch_description():
                 on_exit=[load_joint_state_controller],
             )
         ),
-        RegisterEventHandler(
-            event_handler=OnProcessExit(
-                target_action=load_joint_state_controller,
-                on_exit=[load_gripper_controller],
-            )
-        ),
+
         gazebo,
         node_robot_state_publisher,
         spawn_entity,

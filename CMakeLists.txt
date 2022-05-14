@@ -37,12 +37,10 @@ install(DIRECTORY
   gazebo
   launch
   meshes
-  models
   ros2_control
   rrbot
   rviz
   scripts
-  urdf
   worlds
   xacro
   
