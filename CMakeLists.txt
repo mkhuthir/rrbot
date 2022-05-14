@@ -18,6 +18,7 @@ endif()
 # Common Packages
 find_package(control_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(gazebo_plugins REQUIRED)
 
 # C++ packages
 find_package(ament_cmake REQUIRED)
