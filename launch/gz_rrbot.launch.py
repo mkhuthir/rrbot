@@ -7,6 +7,7 @@ from launch.event_handlers import OnProcessExit
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node 
 from launch_ros.substitutions import FindPackageShare
+from scripts import GazeboRosPaths
 import xacro
 
 pkg_name =    'rrbot'
@@ -23,6 +24,7 @@ pkg_share =       FindPackageShare(package=pkg_name).find(pkg_name)
 
 xacro_file     = os.path.join(pkg_share,'xacro',robot_name+'.xacro')
 world_path     = os.path.join(pkg_share,'worlds',world_name)
+gazebo_path    = os.path.join(pkg_gazebo_ros, 'launch', 'gazebo.launch.py')
 gzserver_path  = os.path.join(pkg_gazebo_ros, 'launch', 'gzserver.launch.py')
 gzclient_path  = os.path.join(pkg_gazebo_ros, 'launch', 'gzclient.launch.py')
 
@@ -33,8 +35,8 @@ params = {'robot_description': doc.toxml()}
 def generate_launch_description():
 
     gz_server = IncludeLaunchDescription(
-      PythonLaunchDescriptionSource(gzserver_path))
-      #,launch_arguments={'world': world_path}.items())
+      PythonLaunchDescriptionSource(gzserver_path),
+      launch_arguments={'world': world_path}.items())
 
     # Start Gazebo client    
     gz_client = IncludeLaunchDescription(
