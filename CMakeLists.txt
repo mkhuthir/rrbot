@@ -34,15 +34,22 @@ include_directories(include)
 install(DIRECTORY
   
   config
+  gazebo
   launch
+  meshes
+  models
+  ros2_control
+  rrbot
+  rviz
   scripts
+  urdf
+  worlds
   xacro
   
   DESTINATION share/${PROJECT_NAME}/
 )
 
 # C++ Executables
-
 
 add_executable(cpp_node src/cpp_node.cpp)
 ament_target_dependencies( cpp_node 
@@ -69,6 +76,7 @@ ament_python_install_package(${PROJECT_NAME})
 
 install(PROGRAMS
 
+  scripts/helloworld.py
   scripts/rrbot.py
 
   DESTINATION lib/${PROJECT_NAME}
