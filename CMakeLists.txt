@@ -76,7 +76,7 @@ ament_python_install_package(${PROJECT_NAME})
 
 install(PROGRAMS
 
-  scripts/helloworld.py
+  scripts/py_node.py
   scripts/rrbot.py
 
   DESTINATION lib/${PROJECT_NAME}
