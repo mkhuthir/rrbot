@@ -18,6 +18,7 @@ endif()
 # Common Packages
 find_package(control_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(gazebo_plugins REQUIRED)
 
 # C++ packages
 find_package(ament_cmake REQUIRED)
@@ -34,15 +35,20 @@ include_directories(include)
 install(DIRECTORY
   
   config
+  gazebo
   launch
+  meshes
+  ros2_control
+  rrbot
+  rviz
   scripts
+  worlds
   xacro
   
   DESTINATION share/${PROJECT_NAME}/
 )
 
 # C++ Executables
-
 
 add_executable(cpp_node src/cpp_node.cpp)
 ament_target_dependencies( cpp_node 
@@ -69,7 +75,7 @@ ament_python_install_package(${PROJECT_NAME})
 
 install(PROGRAMS
 
-  scripts/rrbot.py
+  scripts/py_node.py
 
   DESTINATION lib/${PROJECT_NAME}
 )

@@ -1,2 +1,2 @@
-# gripper
-ROS2 Gripper
+# SKIDBOT
+ROS2 SKIDBOT

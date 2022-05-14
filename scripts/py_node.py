@@ -5,12 +5,11 @@ from rclpy.node import Node
 from std_msgs.msg import Float64MultiArray    
 
 
-
-class gripperPublisher(Node):
+class Publisher(Node):
 
     def __init__(self):
-        super().__init__('my_node')
-        self.pub = self.create_publisher(Float64MultiArray, '/gripper_controller/commands', 10)
+        super().__init__('py_node')
+        self.pub = self.create_publisher(Float64MultiArray, '/py_topic/commands', 10)
         timer_period = 5  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.i = 30.0
@@ -26,7 +25,7 @@ class gripperPublisher(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    my_node = gripperPublisher()
+    my_node = Publisher()
 
     rclpy.spin(my_node)
     

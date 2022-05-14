@@ -4,7 +4,7 @@
   <name>rrbot</name>
   <version>0.1.0</version>
   
-  <description>rrbot</description>
+  <description>Skid Drive Robot</description>
 
   <maintainer email="mkhuthir@gmail.com">Muthanna Alwahash</maintainer>
 
@@ -19,6 +19,7 @@
 
   <build_depend>control_msgs</build_depend>
   <build_depend>std_msgs</build_depend>
+  <build_depend>gazebo_plugins</build_depend>
   
   <build_depend>rclcpp</build_depend>
   <build_depend>rclcpp_action</build_depend>
@@ -41,6 +42,7 @@
   <exec_depend>launch_ros</exec_depend>
   <exec_depend>gazebo_ros2_control</exec_depend>
   <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>gazebo_plugins</exec_depend>
   <exec_depend>xacro</exec_depend>
 
   <test_depend>ament_cmake_gtest</test_depend>
