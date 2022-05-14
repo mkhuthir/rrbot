@@ -9,7 +9,6 @@ from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 import xacro
 
-
 pkg_name =    'rrbot'
 robot_name =  'rrbot'
 world_name =  robot_name+'.world'
@@ -32,6 +31,14 @@ xacro.process_doc(doc)
 params = {'robot_description': doc.toxml()}
 
 def generate_launch_description():
+
+    gz_server = IncludeLaunchDescription(
+      PythonLaunchDescriptionSource(gzserver_path))
+      #,launch_arguments={'world': world_path}.items())
+
+    # Start Gazebo client    
+    gz_client = IncludeLaunchDescription(
+      PythonLaunchDescriptionSource(gzclient_path))      
 
     # Start robot state publisher
     node_robot_state_publisher = Node(
@@ -56,7 +63,8 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-
+        gz_server,
+        gz_client,
         node_robot_state_publisher,
         spawn_entity,
     ])
