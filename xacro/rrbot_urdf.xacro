@@ -200,6 +200,36 @@
 
   <link name="${prefix}camera_optical"/>
 
+<!-- ****************************************************** Hokuyo Joint *************************************************************  -->
+
+  <joint name="${prefix}hokuyo_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0 0 ${hokuyo_z}" rpy="0 0 0"/>
+    <parent link="${prefix}link3"/>
+    <child link="${prefix}hokuyo"/>
+  </joint>
+
+<!-- ****************************************************** Hokuyo Link **************************************************************  -->
+
+  <link name="${prefix}hokuyo">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${hokuyo_length} ${hokuyo_width} ${hokuyo_height}"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+         <mesh filename="${mesh_path}hokuyo.dae"/> <!-- <box size="${hokuyo_length} ${hokuyo_width} ${hokuyo_height}"/>  -->
+      </geometry>
+    </visual>
+    <inertial>
+      <mass value="${hokuyo_mass}" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
 
 <!-- ****************************************************** END **********************************************************************  -->
 
