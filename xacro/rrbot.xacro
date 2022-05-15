@@ -11,6 +11,7 @@
     <xacro:property name="pkg_path"     value="$(find rrbot)"           /> 
     <xacro:property name="mesh_path"    value="${pkg_path}/meshes/"     />
     <xacro:property name="xacro_path"   value="${pkg_path}/xacro/"      />
+    <xacro:property name="config_path"  value="${pkg_path}/config/"     />
 
     <xacro:property name="name_space"   value="rrbot" /> 
     <xacro:property name="prefix"       value=""      /> 
