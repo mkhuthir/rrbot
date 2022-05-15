@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <ros2_control name="rrbot" type="system">
+    <ros2_control name="rrbot_hw" type="system">
 
       <joint name="${prefix}joint1">
         <command_interface name="position">
