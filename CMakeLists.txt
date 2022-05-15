@@ -35,10 +35,8 @@ include_directories(include)
 install(DIRECTORY
   
   config
-  gazebo
   launch
   meshes
-  ros2_control
   rrbot
   rviz
   scripts
