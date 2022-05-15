@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="rrbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <ros2_control name="rrbot_hw" type="system">
 
